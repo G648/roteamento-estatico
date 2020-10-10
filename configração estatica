@@ -1,0 +1,27 @@
+ROTEAMENTO DINAMICO/ESTATICO:
+
+	-ESTATICO:
+		-voce vai fazer as rotas na mão;
+		-conhecimento da rede;
+		-usa em pequenas redes;
+		-nao consome processamento do router 
+			-configuração:
+				-QUANDO COLOCAR O IP NO ROUTER, COLOCAR O IP COMO GATEWAY 
+			-router(config)# iproute<rede de destino (ip e mask)> <proximo router>
+				EX: ip route 192.168.0.0(COLOCAR O IP DA INTERFACE QUE ESTÁ CONECTADA NA MESMA REDE) 255.255.255.0 10.10.0.100(IP DA 
+				
+				-ir na interface do roteador (serial) e colocar o ip da rede 
+					e colocar a mascara
+				
+			-SCRIPT
+				en
+				conf t 
+				hostname (NOME)
+				int g0/1
+				ip address 192.168.0.1 255.255.255.0
+				exit 
+				int s0/3/0
+				ip address 192.168.0.2 255.255.255.0
+				exit 
+				ip route 192.168.0.0(COLOCAR O IP DA INTERFACE QUE ESTÁ CONECTADA NA MESMA REDE) 255.255.255.0 10.10.0.100(IP DA REDE DOS ROUTERS)
+				do wr 
